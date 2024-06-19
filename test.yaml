@@ -1,0 +1,25 @@
+test: yaml
+namespace: argocd
+name: tokeny-adapter
+apiVersion: argoproj.io/v1alpha1
+array:
+  - test: yaml
+    namespace: argocd
+    name: tokeny-adapter
+    apiVersion: argoproj.io/v1alpha1
+    array2:
+      - namespace: argocd
+        name: tokeny-adapter
+        apiVersion: argoproj.io/v1alpha1
+        test: yaml
+        enabled: false
+  - enabled: false
+enabled: false
+spec:
+  generators:
+    - list:
+        elements:
+          - name: c
+          - name: b
+          - name: a
+  name: cluster-resources
