@@ -24,4 +24,9 @@ spec:
           - name: c
           - name: b
           - name: a
+            ord:
+              - name: c
+              - name: b
+              - name: a
+
   name: cluster-resources
