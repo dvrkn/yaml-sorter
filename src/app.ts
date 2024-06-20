@@ -1,4 +1,3 @@
-// Read test.yaml using js-yaml in typescript
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 
@@ -29,7 +28,25 @@ const preOrder = [
     'destination',
     'sources',
 ];
+const arraySortKey='name'
 
+function replacer(key, value) {
+    if (Array.isArray(value)) {
+        if (value.length > 0 && value[0].hasOwnProperty(arraySortKey)) {
+            value.sort((a, b) => {
+                if (a.name < b.name) {
+                    return -1;
+                }
+                if (a.name > b.name) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+    }
+
+    return value;
+}
 
 function sortKeys(a, b) {
     if (preOrder.indexOf(a) != -1 && preOrder.indexOf(b) != -1) {
@@ -60,6 +77,6 @@ function sortKeys(a, b) {
 }
 
 console.log(yaml.dump(data, {
-    sortKeys:
-        (a, b) => sortKeys(a, b)
+    replacer: (key, value) => replacer(key, value),
+    sortKeys: (a, b) => sortKeys(a, b)
 }));
