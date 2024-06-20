@@ -2,12 +2,12 @@ test: yaml
 namespace: argocd
 name: tokeny-adapter
 apiVersion: argoproj.io/v1alpha1
-array:
+arr:
   - test: yaml
     namespace: argocd
     name: tokeny-adapter
     apiVersion: argoproj.io/v1alpha1
-    array2:
+    arr2:
       - namespace: argocd
         name: tokeny-adapter
         apiVersion: argoproj.io/v1alpha1
