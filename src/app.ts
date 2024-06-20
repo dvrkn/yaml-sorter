@@ -32,14 +32,14 @@ const arraySortKey='name'
 
 function replacer(key, value) {
     if (Array.isArray(value)) {
-        if (value.length > 0 && value[0].hasOwnProperty(arraySortKey)) {
+        if (value.length > 0) {
             value.sort((a, b) => {
-                if (a.name < b.name) {
-                    return -1;
-                }
-                if (a.name > b.name) {
-                    return 1;
-                }
+                if (! a.hasOwnProperty(arraySortKey)) return 1;
+                if (! b.hasOwnProperty(arraySortKey)) return -1;
+
+                if (a.name < b.name) return -1;
+                if (a.name > b.name) return 1;
+
                 return 0;
             });
         }
@@ -50,29 +50,17 @@ function replacer(key, value) {
 
 function sortKeys(a, b) {
     if (preOrder.indexOf(a) != -1 && preOrder.indexOf(b) != -1) {
-        if (preOrder.indexOf(a) > preOrder.indexOf(b)) {
-            return 1;
-        }
-        if (preOrder.indexOf(a) < preOrder.indexOf(b)) {
-            return -1;
-        }
+        if (preOrder.indexOf(a) > preOrder.indexOf(b)) return 1;
+        if (preOrder.indexOf(a) < preOrder.indexOf(b)) return -1;
         return 0;
     }
 
-    if (preOrder.indexOf(a) != -1) {
-        return -1;
-    }
-    if (preOrder.indexOf(b) != -1) {
-        return 1;
-    }
+    if (preOrder.indexOf(a) != -1) return -1;
+    if (preOrder.indexOf(b) != -1) return 1;
 
-    if (a < b) {
-        return -1;
-    }
+    if (a < b) return -1;
+    if (a > b) return 1;
 
-    if (a > b) {
-        return 1;
-    }
     return 0;
 }
 
