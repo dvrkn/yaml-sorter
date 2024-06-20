@@ -1,15 +1,15 @@
 test: yaml
 namespace: argocd
-name: tokeny-adapter
+name: test
 apiVersion: argoproj.io/v1alpha1
 arr:
   - test: yaml
     namespace: argocd
-    name: tokeny-adapter
+    name: test
     apiVersion: argoproj.io/v1alpha1
     arr2:
       - namespace: argocd
-        name: tokeny-adapter
+        name: test
         apiVersion: argoproj.io/v1alpha1
         test: yaml
         enabled: false
