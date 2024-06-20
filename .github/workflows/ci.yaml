@@ -10,7 +10,7 @@ jobs:
       run: yarn
     - name: Run build
       run: yarn build
-    - name: Print files
+    - name: INPUT
       run: cat test.yaml
-    - name: Run test
+    - name: OUTPUT
       run: node dist/app.js
