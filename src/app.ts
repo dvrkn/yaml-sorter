@@ -4,9 +4,7 @@
 //
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-
-const file = fs.readFileSync('test.yaml', 'utf8');
-const data = yaml.load(file);
+import { program } from "commander";
 
 // The order of keys having precedence
 //
@@ -80,9 +78,29 @@ function sortKeys(a, b) {
     return 0;
 }
 
-// Dump the yaml file
-//
-console.log(yaml.dump(data, {
-    replacer: (key, value) => replacer(key, value),
-    sortKeys: (a, b) => sortKeys(a, b)
-}));
+function sortYaml(filePath, options) {
+    const file = fs.readFileSync(filePath, 'utf8');
+    const data = yaml.load(file);
+    // Dump the yaml file to same file
+
+    if (options.inplace) {
+        fs.writeFileSync(filePath, yaml.dump(data, {
+            replacer: (key, value) => replacer(key, value),
+            sortKeys: (a, b) => sortKeys(a, b)
+        }));
+    } else {
+        console.log(yaml.dump(data, {
+            replacer: (key, value) => replacer(key, value),
+            sortKeys: (a, b) => sortKeys(a, b)
+        }));
+    }
+}
+
+program
+    .version("1.0.0")
+    .description("Yaml sorter by @dvrkn")
+    .argument('<string>', 'path to the yaml file')
+    .option('-i, --inplace', 'sort the yaml file in place')
+    .action(sortYaml);
+
+program.parse();

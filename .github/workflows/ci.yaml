@@ -13,4 +13,4 @@ jobs:
     - name: INPUT
       run: cat test.yaml
     - name: OUTPUT
-      run: node dist/app.js
+      run: node dist/app.js test.yaml
