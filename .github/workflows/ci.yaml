@@ -12,10 +12,10 @@ jobs:
       run: yarn build
     - name: INPUT
       run: |
-        echo Config:
+        echo "Config:"
         cat config.yaml
-        ========================
-        echo Test:
+        echo "========================"
+        echo "Test:"
         cat test.yaml
     - name: OUTPUT
       run: node dist/app.js test.yaml
