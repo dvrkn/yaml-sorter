@@ -8,35 +8,11 @@ import { program } from "commander";
 
 // The order of keys having precedence
 //
-const preOrder = [
-    'enabled',
-    'apiVersion',
-    'kind',
-    'metadata',
-    'name',
-    'namespace',
-    'labels',
-    'annotations',
-    'goTemplate',
-    'generators',
-    'spec',
-    'containers',
-    'image',
-    'ports',
-    'protocol',
-    'resources',
-    'limits',
-    'requests',
-    'cpu',
-    'memory',
-    'volumeMount',
-    'destination',
-    'sources',
-];
 
-// The key to sort the array
-//
-const arraySortKey='name'
+// load config from file
+const config = yaml.load(fs.readFileSync('config.yaml', 'utf8'));
+const preOrder = config.preOrder;
+const arraySortKey = config.arraySortKey;
 
 // Array sort function
 // The sort based on the arraySortKey

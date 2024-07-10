@@ -9,8 +9,8 @@
     "build": "tsc",
     "start": "node dist/app.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "@dvrkn",
+  "license": "MIT",
   "description": "",
   "dependencies": {
     "commander": "^12.1.0",
