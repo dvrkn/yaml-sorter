@@ -18,4 +18,4 @@ jobs:
         echo "Test:"
         cat test.yaml
     - name: OUTPUT
-      run: node dist/app.js test.yaml
+      run: node dist/yaml-sorter.js test.yaml

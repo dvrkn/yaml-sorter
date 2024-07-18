@@ -1,13 +1,13 @@
 {
   "bin": {
-    "yaml-sorter": "dist/app.js"
+    "yaml-sorter": "dist/yaml-sorter.js"
   },
   "name": "yaml-sorter",
   "version": "1.0.0",
-  "main": "src/app.js",
+  "main": "src/yaml-sorter.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/yaml-sorter.js"
   },
   "author": "@dvrkn",
   "license": "MIT",
